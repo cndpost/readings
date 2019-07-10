@@ -145,7 +145,7 @@ Chat Server Implementation using GOLANG version of socket.IO
       Following HTML code will be a chat client. Save it in index.html and open it in 
 	  a web browser:
 	  
-   <PRE> 
+   
 
         <!DOCTYPE html>
 		<html lang="en">
@@ -166,7 +166,6 @@ Chat Server Implementation using GOLANG version of socket.IO
 		</html>
 
 
-   </PRE>
-
+   
    
 
