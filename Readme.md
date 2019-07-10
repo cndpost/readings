@@ -47,7 +47,7 @@ Because TTS and STT have real-time, low-latency needs, and have to be in bidirec
 
 
 <H1> Implementing a char server in GOLANG </H1>
-This article was originally from <a href="" > </a> but the code in the original article is not working due to its
+This article was originally from <a href="https://tutorialedge.net/golang/golang-websockets-tutorial/" >Here </a> but the code in the original article is not working due to its
 dependencies has changed. I have corrected the code and made it working with the version of dependencies that I 
 maintained together with this article.
 
