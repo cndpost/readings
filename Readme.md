@@ -93,7 +93,7 @@ Chat Server Implementation using GOLANG version of socket.IO
 			"log"
 			"net/http"
 
-			socketio "github.com/googollee/go-socket.io"
+			socketio "github.com/cndpost/go-socket.io"
 		)
 
 		func main() {
