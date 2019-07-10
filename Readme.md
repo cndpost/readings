@@ -14,7 +14,7 @@ This is a collection of interesting links to different technologies and librarie
  <li><a href="https://github.com/zaphoyd/websocketpp" >  Websocket in C++ </a>  </li>
  <li><a href="https://github.com/cndpost/websocket">  Websocket in GOLANG </a> </li>
  <li><a href="https://github.com/cndpost/socket.io">  Socket.IO in JavaScript</a> </li>
- <li><a href="github.com/googollee/go-socket.io">  Socket.IO in GOLANG </a>  </li>
+ <li><a href="https://github.com/googollee/go-socket.io">  Socket.IO in GOLANG </a>  </li>
  <li><a href="https://github.com/socketio/socket.io-client-cpp" >  Socket.IO in C++ </a> </li>
  <li><a href="https://github.com/socketio/socket.io-client-swift" > Socket.IO in Swift </a> </li>
 
