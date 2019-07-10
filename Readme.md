@@ -46,7 +46,7 @@ The TTS and STT, when piped / combined with natural language translation service
 Because TTS and STT have real-time, low-latency needs, and have to be in bidirectional push mode, and the client pulling / server response mode of HTTP REST API is not efficient. So Microsoft made TTS and STT API only available using the websocket protocols.
 
 
-<H1 Implementing a char server in GOLANG />
+<H1> Implementing a char server in GOLANG </H1>
 This article was originally from <a href="" > </a> but the code in the original article is not working due to its
 dependencies has changed. I have corrected the code and made it working with the version of dependencies that I 
 maintained together with this article.
