@@ -52,6 +52,7 @@ maintained together with this article.
 
 The correction is as follows: 
 
+<li>
 <ol> Use the branch v1.0 of the code from https://github.com/googollee/go-socket.io 
 </ol>
 <ol> Use the branch v1.0 of its dependencies https://github.com/googollee/go-engine.io .
@@ -62,7 +63,7 @@ The correction is as follows:
    the original index.html as well but then you need to copy its referenced dependencies of particular versions of
    jquery and socket.io
 </ol>
-
+</li>
 
 <br>
 <H2>Using Socket.IO vs RestAPI - a case analysis </H2>
@@ -88,7 +89,9 @@ Conclusion
 
    For above use cases, the Socket.IO approach is more scalable than the REST API approach.
 
+<h2>
 Chat Server Implementation using GOLANG version of socket.IO 
+</h2>
 
   Preparation (following commented steps not working due to it gets the master branch, but we need branch v1.0 ):  
 
