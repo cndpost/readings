@@ -5,44 +5,50 @@ import (
 	"log"
 	"net/http"
 
-	socketio "github.com/cndpost/go-socket.io"
+	socketio "github.com/older/go-socket.io"
 )
 
 func main() {
+
 	server, err := socketio.NewServer(nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	server.OnConnect("/", func(s socketio.Conn) error {
-		s.SetContext("")
-		fmt.Println("connected:", s.ID())
-		return nil
+
+	server.On("connection", func(so socketio.Socket) {
+
+		log.Println("on connection")
+
+		so.Join("chat")
+
+		so.On("chat message", func(msg string) {
+			log.Println("emit:", so.Emit("chat message", msg))
+			so.BroadcastTo("chat", "chat message", msg)
+		})
+
+		so.On("disconnection", func() {
+			log.Println("on disconnect")
+		})
 	})
-	server.OnEvent("/", "notice", func(s socketio.Conn, msg string) {
+
+	server.On("notice", func(msg string) {
 		fmt.Println("notice:", msg)
-		s.Emit("reply", "have "+msg)
+		//	s.Emit("reply", "have "+msg)
 	})
-	server.OnEvent("/chat", "msg", func(s socketio.Conn, msg string) string {
-		s.SetContext(msg)
-		return "recv " + msg
+
+	server.On("error", func(so socketio.Socket, err error) {
+		log.Println("error:", err)
 	})
-	server.OnEvent("/", "bye", func(s socketio.Conn) string {
-		last := s.Context().(string)
-		s.Emit("bye", last)
-		s.Close()
-		return last
-	})
-	server.OnError("/", func(e error) {
-		fmt.Println("meet error:", e)
-	})
-	server.OnDisconnect("/", func(s socketio.Conn, msg string) {
-		fmt.Println("closed", msg)
-	})
-	go server.Serve()
-	defer server.Close()
 
 	http.Handle("/socket.io/", server)
+
+	//	fs := http.FileServer(http.Dir("static"))
+	//	chat := http.FileServer(http.Dir("./asset"))
+	//	http.Handle("/", fs)
+	//	http.Handle("/chat", chat)
 	http.Handle("/", http.FileServer(http.Dir("./asset")))
-	log.Println("Serving at localhost:8000...")
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	//	http.HandleFunc("/chat", http.FileServer(http.Dir("./asset")))
+
+	log.Println("Serving at localhost:5000...")
+	log.Fatal(http.ListenAndServe(":5000", nil))
 }

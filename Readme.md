@@ -6,7 +6,7 @@ This is a collection of interesting links to different technologies and librarie
 
  <br>
  <br>
- 
+
  Following are language implementations of websocket and socket.IO 
 
  <ul>
@@ -47,9 +47,22 @@ Because TTS and STT have real-time, low-latency needs, and have to be in bidirec
 
 
 <H1> Implementing a char server in GOLANG </H1>
-This article was originally from <a href="https://tutorialedge.net/golang/golang-websockets-tutorial/" >Here </a> but the code in the original article is not working due to its
-dependencies has changed. I have corrected the code and made it working with the version of dependencies that I 
+This article was originally from <a href="https://tutorialedge.net/golang/golang-websockets-tutorial/" >Here </a> but the code in the original article is not working due to its dependencies has changed. I have corrected the code and made it working with the version of dependencies that I 
 maintained together with this article.
+
+The correction is as follows: 
+
+<ol> Use the branch v1.0 of the code from https://github.com/googollee/go-socket.io 
+</ol>
+<ol> Use the branch v1.0 of its dependencies https://github.com/googollee/go-engine.io .
+   Above branch v1.0 supports the socket interface for socket.io package which has the broadcast function supported. 
+</ol>   
+<ol>Use the index.html examples from https://github.com/douglasmakey/go-socket.io/tree/master/example/asset/index.html,  
+   I have modified the index.html to use the current jquery.js and socket.io.js in my folder of .asset, but you can use
+   the original index.html as well but then you need to copy its referenced dependencies of particular versions of
+   jquery and socket.io
+</ol>
+
 
 <br>
 <H2>Using Socket.IO vs RestAPI - a case analysis </H2>
@@ -147,25 +160,41 @@ Chat Server Implementation using GOLANG version of socket.IO
 	  
    
 
-        <!DOCTYPE html>
-		<html lang="en">
-		  <head>
-			<meta charset="UTF-8" />
-			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-			<title>Go WebSocket Tutorial</title>
-		  </head>
-		  <body>
-			<h2>Hello World</h2>
-
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
-			<script>
-			  const socket = io("http://localhost:5000/socket.io/");
-			</script>
-		  </body>
-		</html>
-
-
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+    </style>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+    <script src="/socket.io.js"></script>
+    <script src="/jquery.js"></script>
+    <script>
+      var socket = io();
+      $('form').submit(function(){
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+      });
+      socket.on('chat message', function(msg){
+        $('#messages').append($('<li>').text(msg));
+      });
+    </script>
+  </body>
+</html>
    
    
 
