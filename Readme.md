@@ -159,7 +159,7 @@ Chat Server Implementation using GOLANG version of socket.IO
 	  a web browser:
 	  
    
-
+```
 <!doctype html>
 <html>
   <head>
@@ -196,5 +196,5 @@ Chat Server Implementation using GOLANG version of socket.IO
   </body>
 </html>
    
-   
+```
 
