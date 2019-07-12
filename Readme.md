@@ -76,7 +76,7 @@ Chat Server Implementation using GOLANG version of socket.IO
 </h2>
 <br>
 
-The live demo of this website is at <a href="webportfolio.n2k.net:5000"> Chat-App in GOLANG using go-socket.io </a>
+The live demo of this website is at <a href="http://webportfolio.n2k.net:5000"> Chat-App in GOLANG using go-socket.io </a>
 The full source code is at the /chat-app subfolder of this current repo you are reading now.
 
 
@@ -151,9 +151,7 @@ The full source code is at the /chat-app subfolder of this current repo you are 
              go run main.go
 			  
 
-   Chat UI page in javascript:
-   
-      Following HTML and javascript code implemented the UI part of the chat-app. 
+   Chat UI page in javascript. Following HTML and javascript code implemented the UI part of the chat-app: 
 	  
    
 ```
@@ -197,7 +195,7 @@ The full source code is at the /chat-app subfolder of this current repo you are 
 
 <br>
 
-The live demo of this website is at <a href="webportfolio.n2k.net:5000"> Chat-App in GOLANG using go-socket.io </a>
+The live demo of this website is at <a href="http://webportfolio.n2k.net:5000"> Chat-App in GOLANG using go-socket.io </a>
 The full source code is at the /chat-app subfolder of this current repo you are reading now.
 
 <br>
