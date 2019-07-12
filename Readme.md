@@ -47,10 +47,9 @@ Because TTS and STT have real-time, low-latency needs, and have to be in bidirec
 
 
 <H1> Implementing a chat server in GOLANG </H1>
-<br>
 <H2> -- A case argument of using Socket.IO vs using Rest API </H2>
 
-<H3>Use case scenrio: </H3>
+<H3>Use case scenario: </H3>
 
  A messaging app that any subscribers can broadcast infrequent messagings to all subscribers.
  The message needs to be relayed without too long a delay that feels like real-time communication. 
@@ -77,7 +76,8 @@ Chat Server Implementation using GOLANG version of socket.IO
 </h2>
 <br>
 
-The live demo of this website is at <a href="webportfolio.n2k.net:5000> Chat-App in GOLANG using go-socket.io </a>
+The live demo of this website is at <a href="webportfolio.n2k.net:5000"> Chat-App in GOLANG using go-socket.io </a>
+The full source code is at the /chat-app subfolder of this current repo you are reading now.
 
 
 
@@ -153,8 +153,7 @@ The live demo of this website is at <a href="webportfolio.n2k.net:5000> Chat-App
 
    Chat UI page in javascript:
    
-      Following HTML code will be a chat client. Save it in index.html and open it in 
-	  a web browser:
+      Following HTML and javascript code implemented the UI part of the chat-app. 
 	  
    
 ```
@@ -198,7 +197,8 @@ The live demo of this website is at <a href="webportfolio.n2k.net:5000> Chat-App
 
 <br>
 
-The live demo of this website is at <a href="webportfolio.n2k.net:5000> Chat-App in GOLANG using go-socket.io </a>
+The live demo of this website is at <a href="webportfolio.n2k.net:5000"> Chat-App in GOLANG using go-socket.io </a>
+The full source code is at the /chat-app subfolder of this current repo you are reading now.
 
 <br>
 
@@ -209,17 +209,15 @@ maintained together with this article.
 
 The corrections I have made are as follows: 
 
-<li>
-<ol> Moved the branch v1.0 of the code https://github.com/googollee/go-socket.io to https://github.com/cndpost/go-socket.io/v1.0/go-socket.io  </ol>
-<ol> Moved the branch v1.0 of the code https://github.com/googollee/go-engine.io to https://github.com/cndpost/go-engine/v1.0/go-socket.io </ol>
-
-
-<ol>Use the index.html examples from https://github.com/douglasmakey/go-socket.io/tree/master/example/asset/index.html,  
+<ol>
+<li> Moved the branch v1.0 of the code https://github.com/googollee/go-socket.io to https://github.com/cndpost/go-socket.io/v1.0/go-socket.io  </li>
+<li> Moved the branch v1.0 of the code https://github.com/googollee/go-engine.io to https://github.com/cndpost/go-engine/v1.0/go-socket.io </li>
+<li>Use the index.html examples from https://github.com/douglasmakey/go-socket.io/tree/master/example/asset/index.html,  
    I have modified the index.html to use the current jquery.js and socket.io.js in my folder of .asset, but you can use
    the original index.html as well but then you need to copy its referenced dependencies of particular versions of
    jquery and socket.io
-</ol>
 </li>
+</ol>
 
-The reason we have to fork from the upstream repo https://github.com/googollee/go-socket.io is that the upstream repo has v1.0 in its brach v1.0, but the "go get " commands does not recognize the branch syntax and can only get the main branch.
+The reason we have to fork from the upstream repo https://github.com/googollee/go-socket.io is that the upstream repo has v1.0 in its branch v1.0, but the "go get " commands does not recognize the branch syntax and can only get the main branch.
 And all the later branches have incompatible APIs and cause the tutorial code to be broken.
