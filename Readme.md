@@ -53,11 +53,10 @@ maintained together with this article.
 The correction is as follows: 
 
 <li>
-<ol> Use the branch v1.0 of the code from https://github.com/googollee/go-socket.io 
-</ol>
-<ol> Use the branch v1.0 of its dependencies https://github.com/googollee/go-engine.io .
-   Above branch v1.0 supports the socket interface for socket.io package which has the broadcast function supported. 
-</ol>   
+<ol> Moved the branch v1.0 of the code https://github.com/googollee/go-socket.io to https://github.com/cndpost/go-socket.io/v1.0/go-socket.io . 
+<ol> Moved the branch v1.0 of the code https://github.com/googollee/go-engine.io to https://github.com/cndpost/go-engine/v1.0/go-socket.io
+
+
 <ol>Use the index.html examples from https://github.com/douglasmakey/go-socket.io/tree/master/example/asset/index.html,  
    I have modified the index.html to use the current jquery.js and socket.io.js in my folder of .asset, but you can use
    the original index.html as well but then you need to copy its referenced dependencies of particular versions of
@@ -93,27 +92,21 @@ Conclusion
 Chat Server Implementation using GOLANG version of socket.IO 
 </h2>
 
-  Preparation (following commented steps not working due to it gets the master branch, but we need branch v1.0 ):  
+  Preparation 
 
-   //   go get github.com/cndpost/go-socket.io
+      go get github.com/cndpost/go-socket.io
    <br>
-   //   go get github.com/cndpost/go-engine.io
+      go get github.com/cndpost/go-engine.io
 
-      git clone github.com/cndpost/go-socket.io
-      cd go-socket.io
-      git checkout v.10
-      cd ..
-      git clone github.com/cndpost/go-engine.io
-      cd go-engine.io
-      git checkout v.10
-      cd ..
-     
-      copy above go-socket.io and go-engine.io to the go/src/github.com/cndpost folder
-      so then you can reference them in the following code
+   
 
-  Use in app:
+  We actually just use the v1.0 version of the two packages in their v1.0 folder. The reason
+  we have to fork from the upstream repo is that the upstream repo has v1.0 in its brach v1.0
+  but go get commands does not recognize the branch syntax and can only get the main branch.
+  
+  To use in app:
 
-      import "github.com/cndpost/go-socket.io"
+      import "github.com/cndpost/go-socket.io/v1.0"
 
   Chat server implementation (save the code in file main.go ):
   <PRE>
@@ -123,7 +116,7 @@ Chat Server Implementation using GOLANG version of socket.IO
 			"log"
 			"net/http"
 
-			socketio "github.com/cndpost/go-socket.io"
+			socketio "github.com/cndpost/go-socket.io/v1.0"
 		)
 
 		func main() {
