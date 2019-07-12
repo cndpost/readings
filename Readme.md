@@ -47,22 +47,7 @@ Because TTS and STT have real-time, low-latency needs, and have to be in bidirec
 
 
 <H1> Implementing a char server in GOLANG </H1>
-This article was originally from <a href="https://tutorialedge.net/golang/golang-websockets-tutorial/" >Here </a> but the code in the original article is not working due to its dependencies has changed. I have corrected the code and made it working with the version of dependencies that I 
-maintained together with this article.
 
-The correction is as follows: 
-
-<li>
-<ol> Moved the branch v1.0 of the code https://github.com/googollee/go-socket.io to https://github.com/cndpost/go-socket.io/v1.0/go-socket.io . 
-<ol> Moved the branch v1.0 of the code https://github.com/googollee/go-engine.io to https://github.com/cndpost/go-engine/v1.0/go-socket.io
-
-
-<ol>Use the index.html examples from https://github.com/douglasmakey/go-socket.io/tree/master/example/asset/index.html,  
-   I have modified the index.html to use the current jquery.js and socket.io.js in my folder of .asset, but you can use
-   the original index.html as well but then you need to copy its referenced dependencies of particular versions of
-   jquery and socket.io
-</ol>
-</li>
 
 <br>
 <H2>Using Socket.IO vs RestAPI - a case analysis </H2>
@@ -100,9 +85,7 @@ Chat Server Implementation using GOLANG version of socket.IO
 
    
 
-  We actually just use the v1.0 version of the two packages in their v1.0 folder. The reason
-  we have to fork from the upstream repo is that the upstream repo has v1.0 in its brach v1.0
-  but go get commands does not recognize the branch syntax and can only get the main branch.
+  We actually just use the v1.0 version of the two packages in their v1.0 folder. 
   
   To use in app:
 
@@ -207,4 +190,24 @@ Chat Server Implementation using GOLANG version of socket.IO
 </html>
    
 ```
+<H2> Acknoledgement </H2>
 
+This article was originally from <a href="https://tutorialedge.net/golang/golang-websockets-tutorial/" >Here </a> but the code in the original article is not working due to its code dependencies has changed. I have corrected the code and made it working with the version of dependencies that I 
+maintained together with this article.
+
+The corrections I have made are as follows: 
+
+<li>
+<ol> Moved the branch v1.0 of the code https://github.com/googollee/go-socket.io to https://github.com/cndpost/go-socket.io/v1.0/go-socket.io  </ol>
+<ol> Moved the branch v1.0 of the code https://github.com/googollee/go-engine.io to https://github.com/cndpost/go-engine/v1.0/go-socket.io </ol>
+
+
+<ol>Use the index.html examples from https://github.com/douglasmakey/go-socket.io/tree/master/example/asset/index.html,  
+   I have modified the index.html to use the current jquery.js and socket.io.js in my folder of .asset, but you can use
+   the original index.html as well but then you need to copy its referenced dependencies of particular versions of
+   jquery and socket.io
+</ol>
+</li>
+
+The reason we have to fork from the upstream repo https://github.com/googollee/go-socket.io is that the upstream repo has v1.0 in its brach v1.0, but the "go get " commands does not recognize the branch syntax and can only get the main branch.
+And all the later branches have incompatible APIs and cause the tutorial code to be broken.
