@@ -46,43 +46,48 @@ The TTS and STT, when piped / combined with natural language translation service
 Because TTS and STT have real-time, low-latency needs, and have to be in bidirectional push mode, and the client pulling / server response mode of HTTP REST API is not efficient. So Microsoft made TTS and STT API only available using the websocket protocols.
 
 
-<H1> Implementing a char server in GOLANG </H1>
-
-
+<H1> Implementing a chat server in GOLANG </H1>
 <br>
-<H2>Using Socket.IO vs RestAPI - a case analysis </H2>
-Use case scenrio:
+<H2> -- A case argument of using Socket.IO vs using Rest API </H2>
+
+<H3>Use case scenrio: </H3>
 
  A messaging app that any subscribers can broadcast infrequent messagings to all subscribers.
  The message needs to be relayed without too long a delay that feels like real-time communication. 
  The subscriber numbers can be between thousands to hundreds of thousands of different clients.
  
-If use REST API
+<H3>If use REST API </H3>
 
   In order to attain real-time chat, each subscriber would have to poll the server once every second for 
   any new messages, then we will have 60 REST API calls from each subscriber. If we have a total of 100,000 subscribers, 
   then we will have a total of 6,000,000 REST API calls per minute.
 
-If use Socket.IO
+<H3> If use Socket.IO </H3>
 
    Each client would maintain one solitary connection to the serve. 100,000 subscribers will have a 100,000 simultaneous 
    connections. But the subscribers would not need to poll for new messages. If someone posts a new message, only then would our 
    server push out an update to our 100,000 clients. 
 
-Conclusion
+<h3> Conclusion </H3>
 
    For above use cases, the Socket.IO approach is more scalable than the REST API approach.
 
 <h2>
 Chat Server Implementation using GOLANG version of socket.IO 
 </h2>
+<br>
 
-  Preparation 
+The live demo of this website is at <a href="webportfolio.n2k.net:5000> Chat-App in GOLANG using go-socket.io </a>
 
+
+
+  Preparation of the code for the site:
+
+```
       go get github.com/cndpost/go-socket.io
-   <br>
       go get github.com/cndpost/go-engine.io
-
+```
+ <br>
    
 
   We actually just use the v1.0 version of the two packages in their v1.0 folder. 
@@ -92,7 +97,8 @@ Chat Server Implementation using GOLANG version of socket.IO
       import "github.com/cndpost/go-socket.io/v1.0"
 
   Chat server implementation (save the code in file main.go ):
-  <PRE>
+  
+  ```
 		package main
 
 		import (
@@ -138,15 +144,14 @@ Chat Server Implementation using GOLANG version of socket.IO
 			log.Fatal(http.ListenAndServe(":5000", nil))
 		}
 
-   </PRE>
+   ```
 
    To run above server, just type following command in the same folder as above code:
    
              go run main.go
-			 
-			 
+			  
 
-   Chat client:
+   Chat UI page in javascript:
    
       Following HTML code will be a chat client. Save it in index.html and open it in 
 	  a web browser:
@@ -190,7 +195,14 @@ Chat Server Implementation using GOLANG version of socket.IO
 </html>
    
 ```
-<H2> Acknoledgement </H2>
+
+<br>
+
+The live demo of this website is at <a href="webportfolio.n2k.net:5000> Chat-App in GOLANG using go-socket.io </a>
+
+<br>
+
+<H2> Acknowledgement </H2>
 
 This article was originally from <a href="https://tutorialedge.net/golang/golang-websockets-tutorial/" >Here </a> but the code in the original article is not working due to its code dependencies has changed. I have corrected the code and made it working with the version of dependencies that I 
 maintained together with this article.
